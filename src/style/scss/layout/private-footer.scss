@@ -1,0 +1,6 @@
+#footer {
+    height: $footer-hg;
+    background-color: $footer-bg;
+    border-top: 1px solid $gray-light;
+    & > * { height: 100%; }
+}
