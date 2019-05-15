@@ -10,6 +10,7 @@ import storage from './storage.service';
 import { getMessage } from '../constants/error-messages';
 // absolute url to API
 const API_PATH = config.serviceUrl+config.apiPath;
+const SERVER_URI = config.serviceUrl;
 
 // private names
 const AUTH_STORE = 'sAuth';
@@ -28,7 +29,7 @@ const instanceAPI = axios.create({
     withCredentials: false,
     headers: {
         'Cache-Control': 'no-cache',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
     },
 });
 
@@ -226,13 +227,16 @@ function login ({ username, password }) {
     return new Promise((resolve, reject) => {
         instanceAPI({
             method: 'post',
-            url: `${API_PATH}/auth/login`,
-            // params: { 'grant_type': 'password', username: email, password},
-            data: { username, password },
+            url: `${SERVER_URI}/oauth/token`,
+            data: { 'grant_type': 'password', username: username, password },
+            headers: {
+                ...instanceAPI.headers,
+                'Authorization': 'Basic Y29tLnZyaXNrOjIxODI3MzkyYmFjZmY='
+            }
         }).then(data => {
-            const session = data.auth_token;
+            const session = data;
             // set common authentication header
-            instanceAPI.defaults.headers[AUTH_HEADER] = AUTH_BEARER+session[ACCESS_TOKEN];
+            instanceAPI.defaults.headers[AUTH_HEADER] = AUTH_BEARER + session[ACCESS_TOKEN];
             // check token on API
             getSelf().then(user => {
                 recordSession(session);
@@ -256,17 +260,26 @@ function refreshSession () {
         // get refresh token
         const refreshToken = (storage.get(AUTH_STORE)||{})[REFRESH_TOKEN];
         // NOTE use the axios origin instance to refresh and store new session data
-        axios.post(`${API_PATH}/oauth/token/refresh-token`, { refreshToken })
-            .then(data => {
-                // alias
-                const session = data;
-                recordSession(session);
-                // set common header
-                instanceAPI.defaults.headers[AUTH_HEADER] = AUTH_BEARER+session[ACCESS_TOKEN];
-                resolve(session);
-            })
-            // NOTE execute application logout
-            .catch(error => logout().then(() => reject(error)));
+        axios.post(`${SERVER_URI}/oauth/token`, {
+            'grant_type': REFRESH_TOKEN,
+            'refresh_token': refreshToken
+        }, {
+            headers: {
+                'Authorization': 'Basic Y29tLnZyaXNrOjIxODI3MzkyYmFjZmY=',
+                'Cache-Control': 'no-cache',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(data => {
+            // alias
+            const session = data;
+            recordSession(session);
+            // set common header
+            instanceAPI.defaults.headers[AUTH_HEADER] = AUTH_BEARER+" "+session[ACCESS_TOKEN];
+            resolve(session);
+        })
+        // NOTE execute application logout
+        .catch(error => logout().then(() => reject(error)));
     });
 }
 
@@ -389,9 +402,8 @@ function emailConfirmation ({ token }) {
  */
 function checkHealth () {
     // NOTE used the origin axios instance
-    // TODO expect real API ping
-    return axios.get(`${API_PATH}/actuator/info`);
-    // return axios.get(`${API_PATH}/actuator/health`);
+    return axios.get(`${SERVER_URI}/actuator/info`);
+    // return axios.get(`${SERVER_URI}/actuator/health`);
 }
 
 // named export

@@ -15,6 +15,7 @@ import NoMatch from '../no-match';
 import WelcomePage from './welcome';
 
 import Users from './users';
+import Teachers from './teachers';
 // eslint-disable-next-line no-duplicate-imports
 import ReportsPage from '../peg';
 // eslint-disable-next-line no-duplicate-imports
@@ -36,6 +37,7 @@ class PrivateLayout extends PureComponent {
                 <Route path={ ROUTES.PRIVATE_WELCOME_SCREEN.ROUTE } component={ WelcomePage }/>
                 <Route path={ ROUTES.HOME_CTR.ROUTE } component={ HomeCtrlPage }/>
                 <Route path={ ROUTES.USERS.ROUTE } component={ Users }/>
+                <Route path={ ROUTES.TEACHERS.ROUTE } component={ Teachers }/>
                 <Route path={ ROUTES.REPORTS.ROUTE } component={ ReportsPage }/>
                 <Route path={ ROUTES.PERMISSIONS.ROUTE } component={ PermissionsPage }/>
                 <Route path={ ROUTES.SETTINGS.ROUTE } component={ SettingsPage }/>
@@ -66,112 +68,63 @@ export const MENU = [
     {
         key: 0,
         type: MENU_ITEM_TYPE.HEADER,
-        name: 'Pretty header',
-        // icon: ['far', 'circle'],
-        // badge: 10,
-    }, {
-        key: 1,
-        // disabled: true,
-        badge: 10,
-        type: MENU_ITEM_TYPE.ACTION,
-        name: 'test action',
-        icon: 'exclamation-triangle',
-        action: (...args) => console.log('test action', args),
-        // NOTE ability to custom detection of active state
-        // isActive: location => ROUTES.HOME_CTR.REGEXP.test(location.pathname)
-    }, {
+        name: 'Entities'
+    },
+    {
         key: 2,
+        // disabled: true,
+        type: MENU_ITEM_TYPE.LINK,
+        name: 'Teachers',
+        icon: 'chalkboard-teacher',
+        link: ROUTES.TEACHERS.ROUTE,
+        // NOTE ability to custom detection of active state
+        isActive: location => ROUTES.TEACHERS.REGEXP.test(location.pathname)
+    },
+    {
+        key: 3,
         // disabled: true,
         type: MENU_ITEM_TYPE.LINK,
         name: 'Home Page',
         icon: 'home',
-        badge: 10,
+        // badge: 10,
         link: ROUTES.HOME_CTR.LINK(),
         // NOTE ability to custom detection of active state
         isActive: location => ROUTES.HOME_CTR.REGEXP.test(location.pathname)
-    }, {
-        key: 3,
-        type: MENU_ITEM_TYPE.HEADER,
-        name: 'Test header',
-        icon: ['far', 'circle'],
-        badge: 10,
-    }, {
-        key: 4,
-        icon: 'cog',
-        badge: 10,
-        type: MENU_ITEM_TYPE.MENU,
-        name: 'Settings menu',
-        list: [
-            {
-                key: 5222,
-                // disabled: true,
-                badge: 10,
-                type: MENU_ITEM_TYPE.ACTION,
-                name: 'test action',
-                icon: 'exclamation-triangle',
-                action: (...args) => console.log('test action', args),
-            }, {
-                key: 41,
-                type: MENU_ITEM_TYPE.LINK,
-                name: 'Permissions',
-                icon: 'universal-access',
-                link: ROUTES.PERMISSIONS.LINK(),
-            }, {
-                key: 42,
-                type: MENU_ITEM_TYPE.LINK,
-                name: 'Reports',
-                icon: 'chart-line',
-                link: ROUTES.REPORTS.LINK(),
-            }, {
-                key: 43,
-                type: MENU_ITEM_TYPE.LINK,
-                name: 'Settings',
-                icon: 'cogs',
-                link: ROUTES.SETTINGS.LINK(),
-            }
-        ]
-    }, {
-        key: 5,
-        disabled: true,
-        type: MENU_ITEM_TYPE.LINK,
-        name: 'User List',
-        icon: 'users',
-        link: ROUTES.USERS.LINK(),
-        isActive: location => ROUTES.USERS.REGEXP.test(location.pathname)
-    }, {
-        key: 6,
-        icon: 'cog',
-        badge: 10,
-        type: MENU_ITEM_TYPE.MENU,
-        name: 'Settings menu',
-        list: [
-            {
-                key: 60,
-                // disabled: true,
-                badge: 10,
-                type: MENU_ITEM_TYPE.ACTION,
-                name: 'test action',
-                icon: 'exclamation-triangle',
-                action: (...args) => console.log('test action', args),
-            }, {
-                key: 61,
-                type: MENU_ITEM_TYPE.LINK,
-                name: 'Permissions',
-                icon: 'universal-access',
-                link: ROUTES.PERMISSIONS.LINK(),
-            }, {
-                key: 62,
-                type: MENU_ITEM_TYPE.LINK,
-                name: 'Reports',
-                icon: 'chart-line',
-                link: ROUTES.REPORTS.LINK(),
-            }, {
-                key: 63,
-                type: MENU_ITEM_TYPE.LINK,
-                name: 'Settings',
-                icon: 'cogs',
-                link: ROUTES.SETTINGS.LINK(),
-            }
-        ]
-    }
+    },
+    // {
+    //     key: 4,
+    //     icon: 'cog',
+    //     // badge: 10,
+    //     type: MENU_ITEM_TYPE.MENU,
+    //     name: 'Settings menu',
+    //     list: [
+    //         {
+    //             key: 5222,
+    //             // disabled: true,
+    //             // badge: 10,
+    //             type: MENU_ITEM_TYPE.ACTION,
+    //             name: 'test action',
+    //             icon: 'exclamation-triangle',
+    //             action: (...args) => console.log('test action', args),
+    //         }, {
+    //             key: 41,
+    //             type: MENU_ITEM_TYPE.LINK,
+    //             name: 'Permissions',
+    //             icon: 'universal-access',
+    //             link: ROUTES.PERMISSIONS.LINK(),
+    //         }, {
+    //             key: 42,
+    //             type: MENU_ITEM_TYPE.LINK,
+    //             name: 'Reports',
+    //             icon: 'chart-line',
+    //             link: ROUTES.REPORTS.LINK(),
+    //         }, {
+    //             key: 43,
+    //             type: MENU_ITEM_TYPE.LINK,
+    //             name: 'Settings',
+    //             icon: 'cogs',
+    //             link: ROUTES.SETTINGS.LINK(),
+    //         }
+    //     ]
+    // }
 ];

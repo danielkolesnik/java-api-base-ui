@@ -64,7 +64,9 @@ RootView.propTypes = {
 };
 // Connect
 const Root = connect(
-    state => ({ ...state.app }),
+    state => ({
+        ...state.app
+    }),
     null
 )(RootView);
 

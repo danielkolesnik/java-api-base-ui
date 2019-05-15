@@ -147,8 +147,11 @@ class UserModel extends BaseModel {
      */
     static getSelf (pagination, filters = {}) {
         return new Promise((resolve, reject) => {
-            instanceAPI({ method: 'get', url: '/auth/me/' })
-                .then(user => resolve(UserModel.create(user)))
+            instanceAPI({ method: 'get', url: '/users/self' })
+                .then(user => {
+                    console.log(user);
+                    resolve(UserModel.create(user));
+                })
                 .catch(reject);
         });
     }

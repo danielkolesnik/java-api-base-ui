@@ -68,6 +68,14 @@ export const HOME_CTR = ((base, TAB) => {
     TAB_2: 'test-tab-2',
 });
 
+export const TEACHERS = (base => ({
+    ROUTE: base,
+    LIST: `${base}/list`,
+    EDIT: `${base}/edit/:id`,
+    REGEXP: new RegExp(`${base}.*`, 'i'),
+    LINK: linkTo.bind({ url: () => base }),
+}))(`${LAYOUT_PRIVATE}/teachers`);
+
 export const USERS = (base => ({
     ROUTE: base,
     LIST: `${base}/list`,
