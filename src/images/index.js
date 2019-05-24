@@ -72,7 +72,7 @@ export const LoginPageImage = props => (
 // TODO to known logo ???
 export const Logo = props => (
     <div className="complex-logo" {...props}>
-        Healthene
+        University
     </div>
 );
 
@@ -149,4 +149,3 @@ Spinner.defaultProps = {
     black: false,
     white: false,
 };
-

@@ -18,6 +18,7 @@ export default function (state = initial, action) {
             state = { ...state, ...options, ready: true };
             break;
         case APP.SIGN_IN.SUCCESS:
+            console.log(options.user);
             state = { ...state, ...options, auth: true };
             break;
         case APP.SIGN_OUT.FINISH:

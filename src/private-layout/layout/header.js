@@ -51,7 +51,7 @@ class Header extends PureComponent {
                 <div className="navbar-header">
                     <Link className="navbar-brand" to={PRIVATE_WELCOME_SCREEN.LINK()}>
                         <div className="brand-logo">
-                            <Logo className="img-fluid" />
+                            <Logo className="img-fluid pr-5" />
                         </div>
                         <div className="brand-logo-collapsed">
                             <FabIcon icon="google" />

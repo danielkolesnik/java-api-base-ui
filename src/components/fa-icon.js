@@ -32,7 +32,11 @@ library.add(
     fas.faSignOutAlt,
     fas.faUniversalAccess,
     fas.faExclamationTriangle,
-    fas.faChalkboardTeacher
+    fas.faChalkboardTeacher,
+    fas.faUserEdit,
+    fas.faUserSlash,
+    fas.faUserMinus,
+    fas.faUserPlus
 );
 library.add(
     far.faEnvelope,

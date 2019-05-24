@@ -406,6 +406,56 @@ function checkHealth () {
     // return axios.get(`${SERVER_URI}/actuator/health`);
 }
 
+/**
+ * request for Teachers List
+ *
+ * @example getTeachers().then(...).catch(...)
+ * @returns {Promise} resolves with {TeacherListDTO[]}
+ * @public
+ */
+function getTeachers() {
+    // return axios.get(`${API_PATH}/teacher`);
+    return instanceAPI.get(`${API_PATH}/teacher`);
+}
+
+/**
+ * update Teacher request
+ *
+ * @example getTeachers().then(...).catch(...)
+ * @returns {Promise} resolves with {TeacherDTO}
+ * @public
+ */
+function updateTeacher(id, firstName, lastName, email, qualificationName, fired) {
+    // console.log(email);
+    return instanceAPI.put(`${API_PATH}/teacher`, {id, firstName, lastName, email, qualificationName, fired});
+}
+
+/**
+ * create Teacher request
+ *
+ * @example getTeachers().then(...).catch(...)
+ * @returns {Promise} resolves with {TeacherDTO}
+ * @public
+ */
+function createTeacher(firstName, lastName, email, qualificationName) {
+    return instanceAPI.post(`${API_PATH}/teacher`, {firstName, lastName, email, qualificationName});
+}
+
+/**
+ * delete Teacher request
+ *
+ * @example deleteTeacher().then(...).catch(...)
+ * @returns {Promise} resolves with {number}
+ * @public
+ */
+function deleteTeacher(id, firstName, lastName, qualificationName, email, fired) {
+    return instanceAPI.delete(`${API_PATH}/teacher`, {
+        data: {id, firstName, lastName, qualificationName, email, fired}
+    });
+}
+
+
+
 // named export
 export {
     instanceAPI,
@@ -425,4 +475,8 @@ export {
     changePassword,
     emailConfirmation,
     verifyPasswordToken,
+    getTeachers,
+    updateTeacher,
+    deleteTeacher,
+    createTeacher
 };

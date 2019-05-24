@@ -14,7 +14,7 @@ import { allowedFilters, allowedSort } from './index';
 import store, { history, historyPush } from '../../../store';
 
 // configure
-const changeStatus = UserModel.changeStatuses.bind(UserModel);
+// const changeStatus = UserModel.changeStatuses.bind(UserModel);
 
 function * initializeSaga () {
     yield put({ type: LIST.CLEAR });
@@ -144,7 +144,7 @@ function * changeStatusSaga ({ status, selected }) {
     // NOTE remove error and on preloader
     yield put({ type: LIST.META, expectAnswer: true, errorMessage: null });
     // NOTE change items status
-    yield call(changeStatus, status, selected.map(({ id }) => ({ id })));
+    // yield call(changeStatus, status, selected.map(({ id }) => ({ id })));
     // NOTE clear selected
     yield put({ type: LIST.SELECTED, selected: [] });
     // NOTE send request

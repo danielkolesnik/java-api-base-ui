@@ -6,6 +6,7 @@ import { fork } from 'redux-saga/effects';
 import welcomeSagas from './welcome/saga';
 import layoutSagas from './layout/saga';
 import usersSagas from './users/sagas';
+import teachersSagas from './teachers/saga';
 
 /**
  * connect all public sagas
@@ -16,5 +17,6 @@ export default function * () {
     yield fork(welcomeSagas);
     yield fork(layoutSagas);
     yield fork(usersSagas);
+    yield fork(teachersSagas);
 
 }

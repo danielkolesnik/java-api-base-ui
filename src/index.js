@@ -22,6 +22,7 @@ import PublicLayout from './public-layout';
 import PrivateLayout from './private-layout';
 import Preloader from './components/preloader';
 import Maintenance from './public-layout/maintenance';
+import ModalRoot from './components/modal';
 
 /**
  * Root view which should contain all common dependencies on views
@@ -53,7 +54,8 @@ class RootView extends PureComponent {
                 transitionIn="fadeIn"
                 transitionOut="fadeOut"
                 preventDuplicates={true}
-            />
+            />,
+            <ModalRoot key='root-3'/>
         ];
     }
 }

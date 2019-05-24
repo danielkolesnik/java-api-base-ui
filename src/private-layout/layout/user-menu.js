@@ -29,48 +29,48 @@ class UserMenu extends PureComponent {
                 <DropdownItem header>
                     <span className="d-flex align-items-center">
                         <span>Roles: </span>
-                        {(user.roles || [{ name: 'Unknown' }]).map((role, i) => <Humanize
+                        {(user.roleNames || [{ name: 'Unknown' }]).map((role, i) => <Humanize
                             key={i}
                             tag="span"
-                            text={role.name}
+                            text={role}
                             className="badge badge-danger ml-auto"
                         />)}
                     </span>
                 </DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem onClick={this.handleToggleMenu}>
-                    <div className="media">
-                        <div className="align-self-start mr-3">
-                            <FasIcon size="2x" icon="bars" className="text-success" />
-                        </div>
-                        <div className="media-body">
-                            <p className="m-0">Toggle menu</p>
-                            <p className="m-0 text-muted text-sm">{expanded ? 'Collapse' : 'Expand' }</p>
-                        </div>
-                    </div>
-                </DropdownItem>
-                <DropdownItem>
-                    <div className="media">
-                        <div className="align-self-start mr-3">
-                            <FasIcon size="2x" icon="user-cog" className="text-primary" />
-                        </div>
-                        <div className="media-body">
-                            <p className="m-0">Settings</p>
-                            <p className="m-0 text-muted text-sm">My profile</p>
-                        </div>
-                    </div>
-                </DropdownItem>
-                <DropdownItem>
-                    <div className="media">
-                        <div className="align-self-start mr-3">
-                            <FasIcon size="2x" icon="envelope" className="text-warning" />
-                        </div>
-                        <div className="media-body">
-                            <p className="m-0">Notifications</p>
-                            <p className="m-0 text-muted text-sm">100500</p>
-                        </div>
-                    </div>
-                </DropdownItem>
+                {/*<DropdownItem onClick={this.handleToggleMenu}>*/}
+                    {/*<div className="media">*/}
+                        {/*<div className="align-self-start mr-3">*/}
+                            {/*<FasIcon size="2x" icon="bars" className="text-success" />*/}
+                        {/*</div>*/}
+                        {/*<div className="media-body">*/}
+                            {/*<p className="m-0">Toggle menu</p>*/}
+                            {/*<p className="m-0 text-muted text-sm">{expanded ? 'Collapse' : 'Expand' }</p>*/}
+                        {/*</div>*/}
+                    {/*</div>*/}
+                {/*</DropdownItem>*/}
+                {/*<DropdownItem>*/}
+                    {/*<div className="media">*/}
+                        {/*<div className="align-self-start mr-3">*/}
+                            {/*<FasIcon size="2x" icon="user-cog" className="text-primary" />*/}
+                        {/*</div>*/}
+                        {/*<div className="media-body">*/}
+                            {/*<p className="m-0">Settings</p>*/}
+                            {/*<p className="m-0 text-muted text-sm">My profile</p>*/}
+                        {/*</div>*/}
+                    {/*</div>*/}
+                {/*</DropdownItem>*/}
+                {/*<DropdownItem>*/}
+                    {/*<div className="media">*/}
+                        {/*<div className="align-self-start mr-3">*/}
+                            {/*<FasIcon size="2x" icon="envelope" className="text-warning" />*/}
+                        {/*</div>*/}
+                        {/*<div className="media-body">*/}
+                            {/*<p className="m-0">Notifications</p>*/}
+                            {/*/!*<p className="m-0 text-muted text-sm">100500</p>*!/*/}
+                        {/*</div>*/}
+                    {/*</div>*/}
+                {/*</DropdownItem>*/}
                 <DropdownItem onClick={this.handleSignOut}>
                     <div className="media">
                         <div className="align-self-start mr-3">

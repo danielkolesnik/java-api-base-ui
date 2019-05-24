@@ -46,23 +46,8 @@ class BaseModel {
      */
     get created () {
         // NOTE Java API returns long (1531236834.000000000 => 1531236834)
-        const time = this.createdDate ? this.createdDate*timeFix : (new Date(2018, 0, 1, 0, 0, 0, 0));
+        const time = this.createdAt ? this.createdAt*timeFix : (new Date(2018, 0, 1, 0, 0, 0, 0));
         return moment(time).format(config.clientTimeFormat);
-    }
-
-    /**
-     * helper to prevent Type Error
-     *
-     * @public
-     */
-    get creator () {
-        const result = { fullName: 'Sofra CBC', avatar: null, email: 'CBC System' };
-        // check existing of audit data
-        if (!is.object(this.auditable)) { return result; }
-        const { createdBy } = this.auditable;
-        if (!is.object(createdBy)) { return result; }
-        assignIn(result, this.auditable.createdBy);
-        return result;
     }
 
     /**
@@ -72,23 +57,8 @@ class BaseModel {
      */
     get updated () {
         // NOTE Java API returns long (1531236834.000000000 => 1531236834)
-        const time = this.lastModifiedDate ? this.lastModifiedDate*timeFix : (new Date(2018, 0, 1, 0, 0, 0, 0));
+        const time = this.updatedAt ? this.updatedAt*timeFix : (new Date(2018, 0, 1, 0, 0, 0, 0));
         return moment(time).format(config.clientTimeFormat);
-    }
-
-    /**
-     * helper to prevent Type Error
-     *
-     * @public
-     */
-    get editor () {
-        const result = { fullName: 'Sofra CBC', avatar: null, email: 'CBC System' };
-        // check existing of audit data
-        if (!is.object(this.auditable)) { return result; }
-        const { lastModifiedBy } = this.auditable;
-        if (!is.object(lastModifiedBy)) { return result; }
-        assignIn(result, this.auditable.lastModifiedBy);
-        return result;
     }
 
     /**

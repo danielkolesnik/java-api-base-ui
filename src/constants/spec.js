@@ -5,6 +5,7 @@ export const ENTITY_TYPE = {
     USER_ROLE: 'USER_ROLE',
     CATEGORY: 'CATEGORY',
     USER: 'USER',
+    TEACHER: 'TEACHER'
 };
 
 export const STATUS = {

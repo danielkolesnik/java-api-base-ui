@@ -9,6 +9,7 @@ import tmp from './tmp';
 import app from './app';
 import publicLayout from '../public-layout/reducers';
 import privateLayout from '../private-layout/reducers';
+import modal from '../components/modal/reducer';
 // configuration
 
 // connect
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
     ...publicLayout,
     ...privateLayout,
     toastr,
+    modal,
     form,
     app,
     tmp,

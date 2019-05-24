@@ -4,6 +4,7 @@ import BaseModel from './base.model';
 import UserModel from './user.model';
 import CategoryModel from './category.model';
 import UserRoleModel from './user-role.model';
+import TeacherModel from './teacher.model';
 
 /**
  * Associate models with on ENTITY_TYPE constant to provide ability determine Models programmatically
@@ -19,6 +20,7 @@ export function getModelByType (type) {
         case TYPE.USER: return UserModel;
         case TYPE.CATEGORY: return CategoryModel;
         case TYPE.USER_ROLE: return UserRoleModel;
+        case TYPE.TEACHER: return TeacherModel;
     }
 }
 
@@ -27,4 +29,5 @@ export {
     UserModel,
     UserRoleModel,
     CategoryModel,
+    TeacherModel
 };

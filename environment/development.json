@@ -2,7 +2,7 @@
     "DEBUG": false,
     "production": false,
     "clientTimeFormat": "D MMMM YYYY",
-    "serviceUrl": "setup url for ui",
+    "serviceUrl": "http://localhost:8181",
     "websiteUrl": "setup url for ui",
-    "apiPath": "/api/v1"
+    "apiPath": "/api"
 }

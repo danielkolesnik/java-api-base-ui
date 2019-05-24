@@ -7,6 +7,9 @@ import { connect } from 'react-redux';
 import TYPE from './types';
 import AlertError from '../../components/alert-error';
 import CenteredBox from '../../components/centered-box';
+import {historyPush} from "../../store";
+import {TEACHERS} from "../../constants/routes";
+import {Button} from "reactstrap";
 
 /**
  * Connected welcome page example
@@ -25,12 +28,14 @@ export default connect(
     <CenteredBox style={{ width: '600px' }}>
         <div className="row offset-bottom-6">
             <h2 className="col-xs-12 text-center">
-                This page is only example how it can be
+                Teachers
             </h2>
         </div>
         <div className="row offset-bottom-6">
-            <div className="col-xs-12 text-center">
-                <button className="btn btn-danger" onClick={show}> Show </button>
+            <div className="col-xs-12">
+                <Button block color="success" onClick={() => historyPush(TEACHERS.LINK())}>
+                    <i className="fa fa-fast-backward" aria-hidden="true"> </i>&nbsp;Let's go!
+                </Button>
             </div>
         </div>
         <AlertError active title={'Error:'} message={errorMessage} onChange={clear}/>

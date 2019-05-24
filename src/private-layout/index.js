@@ -80,17 +80,17 @@ export const MENU = [
         // NOTE ability to custom detection of active state
         isActive: location => ROUTES.TEACHERS.REGEXP.test(location.pathname)
     },
-    {
-        key: 3,
-        // disabled: true,
-        type: MENU_ITEM_TYPE.LINK,
-        name: 'Home Page',
-        icon: 'home',
-        // badge: 10,
-        link: ROUTES.HOME_CTR.LINK(),
-        // NOTE ability to custom detection of active state
-        isActive: location => ROUTES.HOME_CTR.REGEXP.test(location.pathname)
-    },
+    // {
+    //     key: 3,
+    //     // disabled: true,
+    //     type: MENU_ITEM_TYPE.LINK,
+    //     name: 'Home Page',
+    //     icon: 'home',
+    //     // badge: 10,
+    //     link: ROUTES.HOME_CTR.LINK(),
+    //     // NOTE ability to custom detection of active state
+    //     isActive: location => ROUTES.HOME_CTR.REGEXP.test(location.pathname)
+    // },
     // {
     //     key: 4,
     //     icon: 'cog',
